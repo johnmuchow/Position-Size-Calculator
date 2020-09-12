@@ -1,9 +1,9 @@
 # Position Sizing Calculator
 #
-# Written by:  @JohnMuchow http://twitter.com/JohnMuchow
-# Website:     PlayTheTrade.com
+# Written by: @JohnMuchow https://twitter.com/JohnMuchow
+# Website: http://PlayTheTrade.com
 #
-# v1.0
+# v1.1
 
 def aggregationPeriod = GetAggregationPeriod();
 def lastPrice = close(priceType = PriceType.LAST);
@@ -71,8 +71,8 @@ AddLabel((movingAverage == movingAverage."50-day SMA" AND daily AND lastPrice > 
 
 AddLabel(!daily AND lastPrice > (_10WeekMovingAverage * 1.02), "Amt to risk: " + AsDollars(Round(amtToRisk, 0)) +  " ", if daily then CreateColor(234, 136, 52) else CreateColor(90, 122, 176));
 
-AddLabel((movingAverage == movingAverage."21-day EMA" AND daily AND lastPrice > (_21DayMovingAverage * 1.02)), (if absOfAdditionalPercentBelowMA then absOfAdditionalPercentBelowMA+"% below" else "") + " 21-day as stop: "  + Round(costOfShares21Day / lastPrice, 0) + " shares (" + AsDollars(costOfShares21Day) + ") | Position size: " + AsPercent(positionSize21Day) + " | Risk as % of equity: " + AsPercent(riskAsPercentOfEquity) + " | % from stop: " + AsPercent(pricePercentFromStop21Day), Color.GRAY);
+AddLabel((movingAverage == movingAverage."21-day EMA" AND daily AND lastPrice > (_21DayMovingAverage * 1.02)), (if absOfAdditionalPercentBelowMA then absOfAdditionalPercentBelowMA+"% below" else "") + " 21-day as stop: "  + Round(costOfShares21Day / lastPrice, 0) + " shares (" + AsDollars(costOfShares21Day) + ") | Position size: " + AsPercent(positionSize21Day) + " | Risk as % of equity: " + AsPercent(riskAsPercentOfEquity) + " | % from stop: " + AsPercent(pricePercentFromStop21Day) + " | Stop: " + Round(targetPrice21Day, 2), Color.GRAY);
 
-AddLabel((movingAverage == movingAverage."50-day SMA" AND daily AND lastPrice > (_50DayMovingAverage * 1.02)), (if absOfAdditionalPercentBelowMA then absOfAdditionalPercentBelowMA+"% below" else "") + " 50-day as stop: "  + Round(costOfShares50Day / lastPrice, 0) + " shares (" + AsDollars(costOfShares50Day) + ") | Position size: " + AsPercent(positionSize50Day) + " | Risk as % of equity: " + AsPercent(riskAsPercentOfEquity) + " | % from stop: " + AsPercent(pricePercentFromStop50Day), Color.GRAY);
+AddLabel((movingAverage == movingAverage."50-day SMA" AND daily AND lastPrice > (_50DayMovingAverage * 1.02)), (if absOfAdditionalPercentBelowMA then absOfAdditionalPercentBelowMA+"% below" else "") + " 50-day as stop: "  + Round(costOfShares50Day / lastPrice, 0) + " shares (" + AsDollars(costOfShares50Day) + ") | Position size: " + AsPercent(positionSize50Day) + " | Risk as % of equity: " + AsPercent(riskAsPercentOfEquity) + " | % from stop: " + AsPercent(pricePercentFromStop50Day) + " | Stop: " + Round(targetPrice50Day, 2), Color.GRAY);
 
-AddLabel(!daily AND lastPrice > (_10WeekMovingAverage * 1.02), (if absOfAdditionalPercentBelowMA then absOfAdditionalPercentBelowMA+"% below" else "") + " 10-week as stop: "  + Round(costOfShares10Week / lastPrice, 0) + " shares (" + AsDollars(costOfShares10Week) + ") | Position size: " + AsPercent(positionSize10Week) + " | Risk as % of equity: " + AsPercent(riskAsPercentOfEquity) + " | % from stop: " + AsPercent(pricePercentFromStop10Week), Color.GRAY);
+AddLabel(!daily AND lastPrice > (_10WeekMovingAverage * 1.02), (if absOfAdditionalPercentBelowMA then absOfAdditionalPercentBelowMA+"% below" else "") + " 10-week as stop: "  + Round(costOfShares10Week / lastPrice, 0) + " shares (" + AsDollars(costOfShares10Week) + ") | Position size: " + AsPercent(positionSize10Week) + " | Risk as % of equity: " + AsPercent(riskAsPercentOfEquity) + " | % from stop: " + AsPercent(pricePercentFromStop10Week) + " | Stop: " + Round(targetPrice10week, 2), Color.GRAY);
